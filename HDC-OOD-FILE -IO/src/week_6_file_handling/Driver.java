@@ -1,11 +1,43 @@
 package week_6_file_handling;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 // Creating Driver class to manage and call all the classes
 public class Driver
 {
+
+	private static final String CHAIR = "chair";
+
+	private static final String TABLE = "table";
+
+	private static final String DRESSER = "dresser";
+
+	private static final String SPOON = "spoon";
+
+	private static final String FORK = "fork";
+
+	private static final String KNIFE = "knife";
+
+	private static final String PLATE = "plate";
+
+	private static final String KEYBOARD = "keyboard";
+
+	private static final String MOBILE_PHONE = "mobilephone";
+
+	private static final String MP3_PLAYER = "mp3player";
+
+	private static final String TV_SET = "tvset";
 
 	// Creating the ArrayList in order to follow the annunciate
 	static ArrayList<Product> products = new ArrayList<>();
@@ -13,84 +45,86 @@ public class Driver
 	// Creating a method add in order to populate the array list from the main method
 	public static int add()
 	{
-		Chairs chairs1 = new Chairs("chair 1", "Amazing Chair ", 30.00, 10);
-		Chairs chairs2 = new Chairs("chair 2", "Surreal Chair ", 45.50, 20);
-		Chairs chairs3 = new Chairs("chair 3", "Transparent Chair ", 70.90, 30);
-		products.add(chairs1);
-		products.add(chairs2);
-		products.add(chairs3);
-
-		Tables table1 = new Tables("table 1", "Amazing Table ", 80.10, 20);
-		Tables table2 = new Tables("table 2", "Surreal Table ", 100.99, 15);
-		Tables table3 = new Tables("table 3", "Transparent Table ", 150.70, 30);
-
-		products.add(table1);
-		products.add(table2);
-		products.add(table3);
-
-		Dressers dresser1 = new Dressers("dresser 1", "Amazing Dresser ", 350.00, 10, 3, 2, 4);
-		Dressers dresser2 = new Dressers("dresser 2", "Surreal Dresser ", 700.00, 10, 3, 2, 6);
-		Dressers dresser3 = new Dressers("dresser 3", "Transparent Dresser ", 1000.00, 10, 3, 3, 6);
-		products.add(dresser1);
-		products.add(dresser2);
-		products.add(dresser3);
-
-		Spoons spoon1 = new Spoons("spoon 1", "Amazing Spoon ", 5.18, 10, "Metal");
-		Spoons spoon2 = new Spoons("spoon 2", "Surreal Spoon ", 12.30, 10, "Plastic");
-		Spoons spoon3 = new Spoons("spoon 3", "Transparent Spoon ", 18.60, 10, "Silver");
-		products.add(spoon1);
-		products.add(spoon2);
-		products.add(spoon3);
-
-		Forks fork1 = new Forks("fork 1", "Amazing Fork ", 6.50, 10, "Metal");
-		Forks fork2 = new Forks("fork 2", "Surreal Fork ", 8.80, 10, "Plastic");
-		Forks fork3 = new Forks("fork 3", "Transparent Fork ", 10.70, 10, "Silver");
-		products.add(fork1);
-		products.add(fork2);
-		products.add(fork3);
-
-		Knives knife1 = new Knives("knife 1", "Amazing Knive ", 4.20, 10, "Metal");
-		Knives knife2 = new Knives("knife 2", "Surreal Knive ", 6.30, 10, "Plastic");
-		Knives knife3 = new Knives("knife 3", "Transparent Knives ", 8.10, 10, "Silver");
-		products.add(knife1);
-		products.add(knife2);
-		products.add(knife3);
-		products.add(knife3);
-
-		Plates plate1 = new Plates("plate 1", "Amazing Plate ", 12.10, 10, "porcelana");
-		Plates plate2 = new Plates("plate 2", "Surreal Plate ", 15.10, 10, "porcelana");
-		Plates plate3 = new Plates("plate 3", "Transparent Plate ", 20.10, 10, "glass");
-		products.add(plate1);
-		products.add(plate2);
-		products.add(plate3);
-
-		Keyboards keyboard1 = new Keyboards("keyboard 1", "Amazing Keyboard ", 29.99, 10);
-		Keyboards keyboard2 = new Keyboards("keyboard 2", "Surreal Keyboard ", 49.99, 10);
-		Keyboards keyboard3 = new Keyboards("keyboard 3", "Transparent Keyboard ", 99.99, 10);
-		products.add(keyboard1);
-		products.add(keyboard2);
-		products.add(keyboard3);
-
-		MobilePhones mobilePhone1 = new MobilePhones("mobile Phone 1", "Nokia x ", 400.10, 10);
-		MobilePhones mobilePhone2 = new MobilePhones("mobile Phone 2", "Sansung x ", 600.10, 10);
-		MobilePhones mobilePhone3 = new MobilePhones("mobile Phone 3", "Apple x ", 800.10, 10);
-		products.add(mobilePhone1);
-		products.add(mobilePhone2);
-		products.add(mobilePhone3);
-
-		MP3Players mp3Player1 = new MP3Players("mp3 Player 1", "Amazing MP3 Player ", 10.10, 10, 16);
-		MP3Players mp3Player2 = new MP3Players("mp3 Player 2", "Surreal MP3 Player ", 50.10, 10, 32);
-		MP3Players mp3Player3 = new MP3Players("mp3 Player 3", "Transparent MP3 Player ", 100.10, 10, 64);
-		products.add(mp3Player1);
-		products.add(mp3Player2);
-		products.add(mp3Player3);
-
-		TVSets tv1 = new TVSets("tv 1", "Sansung TV", 300.10, 25, 42.2);
-		TVSets tv2 = new TVSets("tv 2", "Chingwang TV", 500.10, 15, 42.2);
-		TVSets tv3 = new TVSets("tv 3", "Sony TV", 800.10, 15, 42.2);
-		products.add(tv1);
-		products.add(tv2);
-		products.add(tv3);
+		// readingTxt();
+		readingData();
+		// Chairs chairs1 = new Chairs("chair 1", "Amazing Chair ", 30.00, 10);
+		// Chairs chairs2 = new Chairs("chair 2", "Surreal Chair ", 45.50, 20);
+		// Chairs chairs3 = new Chairs("chair 3", "Transparent Chair ", 70.90, 30);
+		// products.add(chairs1);
+		// products.add(chairs2);
+		// products.add(chairs3);
+		//
+		// Tables table1 = new Tables("table 1", "Amazing Table ", 80.10, 20);
+		// Tables table2 = new Tables("table 2", "Surreal Table ", 100.99, 15);
+		// Tables table3 = new Tables("table 3", "Transparent Table ", 150.70, 30);
+		//
+		// products.add(table1);
+		// products.add(table2);
+		// products.add(table3);
+		//
+		// Dressers dresser1 = new Dressers("dresser 1", "Amazing Dresser ", 350.00, 10, 3, 2, 4);
+		// Dressers dresser2 = new Dressers("dresser 2", "Surreal Dresser ", 700.00, 10, 3, 2, 6);
+		// Dressers dresser3 = new Dressers("dresser 3", "Transparent Dresser ", 1000.00, 10, 3, 3, 6);
+		// products.add(dresser1);
+		// products.add(dresser2);
+		// products.add(dresser3);
+		//
+		// Spoons spoon1 = new Spoons("spoon 1", "Amazing Spoon ", 5.18, 10, "Metal");
+		// Spoons spoon2 = new Spoons("spoon 2", "Surreal Spoon ", 12.30, 10, "Plastic");
+		// Spoons spoon3 = new Spoons("spoon 3", "Transparent Spoon ", 18.60, 10, "Silver");
+		// products.add(spoon1);
+		// products.add(spoon2);
+		// products.add(spoon3);
+		//
+		// Forks fork1 = new Forks("fork 1", "Amazing Fork ", 6.50, 10, "Metal");
+		// Forks fork2 = new Forks("fork 2", "Surreal Fork ", 8.80, 10, "Plastic");
+		// Forks fork3 = new Forks("fork 3", "Transparent Fork ", 10.70, 10, "Silver");
+		// products.add(fork1);
+		// products.add(fork2);
+		// products.add(fork3);
+		//
+		// Knives knife1 = new Knives("knife 1", "Amazing Knive ", 4.20, 10, "Metal");
+		// Knives knife2 = new Knives("knife 2", "Surreal Knive ", 6.30, 10, "Plastic");
+		// Knives knife3 = new Knives("knife 3", "Transparent Knives ", 8.10, 10, "Silver");
+		// products.add(knife1);
+		// products.add(knife2);
+		// products.add(knife3);
+		// products.add(knife3);
+		//
+		// Plates plate1 = new Plates("plate 1", "Amazing Plate ", 12.10, 10, "porcelana");
+		// Plates plate2 = new Plates("plate 2", "Surreal Plate ", 15.10, 10, "porcelana");
+		// Plates plate3 = new Plates("plate 3", "Transparent Plate ", 20.10, 10, "glass");
+		// products.add(plate1);
+		// products.add(plate2);
+		// products.add(plate3);
+		//
+		// Keyboards keyboard1 = new Keyboards("keyboard 1", "Amazing Keyboard ", 29.99, 10);
+		// Keyboards keyboard2 = new Keyboards("keyboard 2", "Surreal Keyboard ", 49.99, 10);
+		// Keyboards keyboard3 = new Keyboards("keyboard 3", "Transparent Keyboard ", 99.99, 10);
+		// products.add(keyboard1);
+		// products.add(keyboard2);
+		// products.add(keyboard3);
+		//
+		// MobilePhones mobilePhone1 = new MobilePhones("mobile Phone 1", "Nokia x ", 400.10, 10);
+		// MobilePhones mobilePhone2 = new MobilePhones("mobile Phone 2", "Sansung x ", 600.10, 10);
+		// MobilePhones mobilePhone3 = new MobilePhones("mobile Phone 3", "Apple x ", 800.10, 10);
+		// products.add(mobilePhone1);
+		// products.add(mobilePhone2);
+		// products.add(mobilePhone3);
+		//
+		// MP3Players mp3Player1 = new MP3Players("mp3 Player 1", "Amazing MP3 Player ", 10.10, 10, 16);
+		// MP3Players mp3Player2 = new MP3Players("mp3 Player 2", "Surreal MP3 Player ", 50.10, 10, 32);
+		// MP3Players mp3Player3 = new MP3Players("mp3 Player 3", "Transparent MP3 Player ", 100.10, 10, 64);
+		// products.add(mp3Player1);
+		// products.add(mp3Player2);
+		// products.add(mp3Player3);
+		//
+		// TVSets tv1 = new TVSets("tv 1", "Sansung TV", 300.10, 25, 42.2);
+		// TVSets tv2 = new TVSets("tv 2", "Chingwang TV", 500.10, 15, 42.2);
+		// TVSets tv3 = new TVSets("tv 3", "Sony TV", 800.10, 15, 42.2);
+		// products.add(tv1);
+		// products.add(tv2);
+		// products.add(tv3);
 		return 0;
 	}// closing the add method
 
@@ -404,6 +438,7 @@ public class Driver
 				case 5:
 					System.out.println();
 					System.out.println("                                    The End   ");
+					saveData();
 					System.exit(0);
 					break;
 
@@ -418,5 +453,183 @@ public class Driver
 		buyer.close();
 		input.close();
 	}// main method
+
+	public static void readingTxt()
+	{
+
+		Scanner fileIn;
+		String fileName = "input.txt";
+		try
+		{
+			fileIn = new Scanner(new FileReader(fileName));
+			while (fileIn.hasNextLine())
+			{
+
+				String line = fileIn.nextLine();
+				String[] split = line.split(";");
+
+				String type = split[0];
+
+				switch (type)
+				{
+					case CHAIR:
+						Chairs chair = new Chairs(split[1].trim(), split[2].trim(), Double.parseDouble(split[3].trim()),
+										Integer.parseInt(split[4].trim()));
+						products.add(chair);
+						break;
+					default:
+						break;
+
+				}
+
+			} // end while
+
+			fileIn.close();
+
+		} // end try
+
+		catch (FileNotFoundException e)
+
+		{
+
+			System.out.println("Error: " + e.getMessage());
+
+		} // end catch
+	}
+
+	public static void saveData()
+	{
+
+		String fileName = "save.data";
+
+		ObjectOutputStream fileOut;
+
+		try
+		{
+
+			fileOut = new ObjectOutputStream(new FileOutputStream(fileName));
+
+			for (int i = 0; i < products.size(); i++)
+			{
+
+				fileOut.writeObject(products.get(i));
+
+			} // end for
+
+			fileOut.close();
+
+			System.out.println("moviment saved");
+
+		} // end try
+
+		catch (IOException e)
+
+		{
+
+			System.out.println("IO Error : " + e.getMessage());
+
+		}
+
+	}
+
+	public static void readingData()
+	{
+
+		String fileName = "save.data";
+
+		ObjectInputStream fileIn;
+
+		Product aProduct;
+
+		try
+		{
+
+			fileIn = new ObjectInputStream(new FileInputStream(fileName));
+
+			aProduct = (Product) fileIn.readObject();
+
+			while (aProduct != null)
+			{
+				if (aProduct instanceof Chairs)
+				{
+					Chairs chair = (Chairs) aProduct;
+					products.add(chair);
+				}
+
+				aProduct = (Product) fileIn.readObject();
+			} // end while
+
+			fileIn.close();
+
+		} // end try
+
+		catch (FileNotFoundException e)
+
+		{
+
+			System.out.println("Error: " + e.getMessage());
+			readingTxt();
+
+		} // end catch
+
+		catch (IOException e) // this will always be called
+
+		{
+			// so need to check to see if objects were read
+
+			// or there is a general IO error
+
+			if (products.size() == 0)
+
+				System.out.println("IO Error : " + e.getMessage());
+
+		} // end catch
+
+		catch (ClassNotFoundException e)
+
+		{
+
+			System.out.println("Class Error : " + e.getMessage());
+
+		} // end catch
+	}
+
+	public static void creatingSalesTxt(String productId, String name, int quantity, double price, double taxReturn)
+	{
+
+		PrintWriter fileOut;
+
+		String fileName = "sales.txt";
+
+		Date date = new Date();
+
+		StringBuilder sb = new StringBuilder();
+
+		try
+
+		{
+			fileOut = new PrintWriter(new FileWriter(fileName, true));
+
+			sb.append(date.toString());
+			sb.append(" | Venda realizada com sucesso ");
+			sb.append(" |Product Id: " + productId);
+			sb.append(" | Product Name: " + name);
+			sb.append(" | Quantity: " + quantity);
+			sb.append(" | Unit price: " + price);
+			sb.append(" | Total price: " + String.valueOf(quantity * price));
+			sb.append(" | Tax rate: " + taxReturn);
+
+			fileOut.println(sb.toString());
+
+			fileOut.close();
+
+		} // end try
+
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+	} // end main
 
 }// closing driver

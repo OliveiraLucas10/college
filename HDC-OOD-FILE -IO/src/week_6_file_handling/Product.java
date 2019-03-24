@@ -62,6 +62,8 @@ abstract class Product implements Serializable {
 		System.out.println(" Congratulation! You succesfully bought " + quantity + " of " + productId);
 		System.out.println(" =================================================================================== ");
 		System.out.println("                                                                                     ");
+		
+		Driver.creatingSalesTxt(productId, getName(), quantity, getPrice(), taxReturn(productId, quantity));
 	}//closing the buy products method
 	
 }//Closing class Product
